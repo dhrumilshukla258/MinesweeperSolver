@@ -205,9 +205,7 @@ int Solver::ApplyRules_Aux()
 	const std::vector<std::tuple<int, int>>& visitedIndex = mField.GetClickedValues();
 	int i, j, k, x1, x2, y1, y2;
 
-	for ( i = 0; i < visitedIndex.size(); ++i) {
-		Rule12_Aux( std::get<0>(visitedIndex[i]), std::get<1>(visitedIndex[i]));
-	}
+	
 
 	for ( i = 0; i < visitedIndex.size(); ++i) {
 		x1 = std::get<0>(visitedIndex[i]);
@@ -225,6 +223,8 @@ int Solver::ApplyRules_Aux()
 				}
 			}
 		}
+
+		Rule12_Aux(std::get<0>(visitedIndex[i]), std::get<1>(visitedIndex[i]));
 	}
 
 	return mField.TotalUknownLocations();
